@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDoc Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef8f0;
+            text-align: center;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #eef8f0;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .contact-button {
+            background-color: #eef8f0;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        
+        }
+
+        .contact-button:hover {
+            background-color: #f7f9f7;
+            
+        }
+
+
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 30px 0;
+            color: #2d6a4f;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 60%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #2d6a4f;
+        }
+
+        button {
+            background-color: #5aa02c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4a8b26;
+        }
+
+        .purpose-section {
+            background-color: #1f4d3b;
+            color: white;
+            padding: 50px 10%;
+            text-align: left;
+        }
+
+        .purpose-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .purpose-image {
+            max-width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .purpose-text {
+            max-width: 45%;
+        }
+
+        .purpose-text h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #c1e1d3;
+        }
+
+        .purpose-text p {
+            font-size: 1.2em;
+            color: #c1e1d3;
+        }
+
+        .nature-section {
+            background-color: #eef8f0;
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .nature-section h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 10px;
+        }
+
+        .nature-section p {
+            font-size: 1.2em;
+            color: #2d6a4f;
+            margin-bottom: 40px;
+        }
+
+        .nature-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .nature-item {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            display: flex;
+        }
+
+        .nature-image {
+            width: 50%;
+            height: auto;
+            border-right: 2px solid #f0f8f0;
+        }
+
+        .nature-text {
+            padding: 20px;
+            text-align: left;
+            width: 50%;
+        }
+
+        .nature-text h3 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d6a4f;
+        }
+
+        .nature-text p {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .nature-text button {
+            background-color: #5aa02c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nature-text button:hover {
+            background-color: #4a8b26;
+        }
+
+        @media (max-width: 768px) {
+            .nature-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .nature-item {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .nature-image {
+                width: 100%;
+            }
+        }
+
+        .how-it-works {
+            background-color: #e5f7eb;
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 40px;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .step-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .step-item h3 {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d6a4f;
+        }
+
+        .step-item p {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .step-item button {
+            background-color: #5aa02c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .step-item button:hover {
+            background-color: #4a8b26;
+        }
+
+        @media (max-width: 768px) {
+            .steps-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .step-item {
+                width: 100%;
+            }
+
+            .step-icon {
+                width: 60px;
+            }
+
+            .step-item h3 {
+                font-size: 1.4em;
+            }
+
+            .step-item p {
+                font-size: 0.9em;
+            }
+        }
+
+        .subscribe-container {
+            background-color: #e0f7e9;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 260px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 40%;
+            padding: 12px;
+            font-size: 1rem;
+            margin-right: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2c6b2b;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer {
+            background-color: #f0f9f4;
+            padding: 30px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #3e8e41;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #3e8e41;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .footer-links a:hover {
+            color: #256d31;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #3e8e41;
+            border-top: 1px solid #3e8e41;
+        }
+
+        .footer-left p {
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        .footer-right a {
+            text-decoration: none;
+            color: #3e8e41;
+            margin: 0 10px;
+            font-size: 12px;
+        }
+
+        .footer-right a:hover {
+            color: #256d31;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">EcoDoc Creator</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="form.html">Subscribe Now</a></li>
+            </ul>
+        </nav>
+        <div class="contact-button">
+            <a style=" text-decoration: none; color: #000;" href="mailto:info@ecodocseries.com">info@ecodocseries.com</a>
+        </div>
+    </header>
+
+    <main>
+        <h1>Experience the world through <br> immersive storytelling.</h1>
+        <div class="image-container">
+            <img src="p-1.png" alt="Astronaut in desert">
+        </div>
+        <p>Join our community and engage with pressing environmental issues.</p>
+        <button>Start Your Journey</button>
+    </main>
+    <br><br><br>
+    <section class="purpose-section">
+        <div class="purpose-container">
+            <img src="p-2.png" alt="Astronaut in desert" class="purpose-image">
+            <div class="purpose-text">
+                <h2>Our Purpose</h2>
+                <p>We aim to educate and inspire action through captivating virtual reality documentaries.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="nature-section">
+        <h2>Discover Nature's Wonders</h2>
+        <p>A Journey Through Our Planet</p>
+        <div class="nature-container">
+            <div class="nature-item">
+                <img src="p-3.png" alt="Nature Experience" class="nature-image">
+                <div class="nature-text">
+                    <h3>Explore, Learn, Act</h3>
+                    <p>Dive into immersive experiences that change perspectives.<br>Witness the beauty and challenges of
+                        our environment.</p>
+                    <button>Join the Movement</button>
+                </div>
+            </div>
+            <div class="nature-item">
+                <img src="p-4.png" alt="Nature Engagement" class="nature-image">
+                <div class="nature-text">
+                    <h3>Engage with Nature</h3>
+                    <p>Transform Your Understanding<br>See the world like never before through VR.</p>
+                    <button>Get Involved</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step-item">
+                <img src="p-5.png" alt="Step 1" class="step-icon">
+                <h3>Immersive Storytelling</h3>
+                <p>Experience environmental issues firsthand through VR narratives.</p>
+            </div>
+            <div class="step-item">
+                <img src="p-6.png" Step 2" class="step-icon">
+                <h3>Interactive Learning</h3>
+                <p>Engage with content that encourages critical thinking and action.</p>
+            </div>
+            <div class="step-item">
+                <img src="p-7.png" alt="Step 3" class="step-icon">
+                <h3>Community Engagement</h3>
+                <p>Join discussions and initiatives that promote sustainability.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="subscribe-container">
+        <h2>Subscribe for Updates</h2>
+        <p>Stay informed about new releases and events.</p>
+        <br>
+        <form action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <p>EcoDoc Creator</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Learn More</a>
+                <a href="#">Our Work</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <p>&copy; 2024 EcoDoc Series. All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookies Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
